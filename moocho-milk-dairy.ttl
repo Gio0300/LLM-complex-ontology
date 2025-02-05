@@ -1,0 +1,198 @@
+@prefix : <http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/> .  
+@prefix owl: <http://www.w3.org/2002/07/owl#> .  
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .  
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .  
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .  
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .  
+  
+:MooChoMilkDairy rdf:type :Organization ;  
+    :hasName "MooCho Milk Dairy" .  
+  
+:MooChoMilkPlant rdf:type :Plant ;  
+    :hasName "Moo-cho Milk Plant" ;  
+    :hasDepartment :RawMilkProcessing, :Filtering ;  
+    :hasAsset :CleaningSkid1, :CleaningSkid2 .  
+  
+:CleaningSkid1 rdf:type :CleaningSkid ;  
+    :hasId "CS001" ;  
+    :hasName "Cleaning Skid 1" .  
+  
+:CleaningSkid2 rdf:type :CleaningSkid ;  
+    :hasId "CS002" ;  
+    :hasName "Cleaning Skid 2" .  
+  
+:RawMilkProcessing rdf:type :Department ;  
+    :hasName "Raw Milk Processing" ;  
+    :hasDepartmentArea :RawMilkDelivery, :MilkSeparation .  
+  
+:RawMilkDelivery rdf:type :DepartmentArea ;  
+    :hasName "Raw Milk Delivery" ;  
+    :hasWorkcenter :Receiving .  
+  
+:Receiving rdf:type :Workcenter ;  
+    :hasName "Receiving" ;  
+    :hasAsset :RawMilkTank1, :RawMilkTank2, :RawMilkTank3, :RawMilkTank4 .  
+  
+:RawMilkTank1 rdf:type :RawMilkTank ;  
+    :hasId "RMT001" ;  
+    :hasName "Raw Milk Tank 1" .  
+  
+:RawMilkTank2 rdf:type :RawMilkTank ;  
+    :hasId "RMT002" ;  
+    :hasName "Raw Milk Tank 2" .  
+  
+:RawMilkTank3 rdf:type :RawMilkTank ;  
+    :hasId "RMT003" ;  
+    :hasName "Raw Milk Tank 3" .  
+  
+:RawMilkTank4 rdf:type :RawMilkTank ;  
+    :hasId "RMT004" ;  
+    :hasName "Raw Milk Tank 4" .  
+  
+:MilkSeparation rdf:type :DepartmentArea ;  
+    :hasName "Milk Separation" ;  
+    :hasWorkcenter :SpinSeparation, :Storage .  
+  
+:SpinSeparation rdf:type :Workcenter ;  
+    :hasName "Spin Separation" ;  
+    :hasAsset :Separator1, :Separator2, :Separator3 .  
+  
+:Separator1 rdf:type :MilkSeparator ;  
+    :hasId "MS001" ;  
+    :hasName "Separator 1" ;  
+    :isCleanedBy :CleaningSkid1 ;  
+    :hasRawMilkSource :RawMilkTank1, :RawMilkTank2 ;  
+    :hasSkimMilkDestination :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5 ;  
+    :hasCreamDestination :CreamTank1, :CreamTank2, :CreamTank3 ;  
+    :isExtractingRawMilkFrom :RawMilkTank1 ;  
+    :isTransferringSkimMilkTo :SkimMilkTank1 ;  
+    :isTransferringCreamTo :CreamTank1 ;  
+    :hasState "Separating" .  
+  
+:Separator2 rdf:type :MilkSeparator ;  
+    :hasId "MS002" ;  
+    :hasName "Separator 2" ;  
+    :isCleanedBy :CleaningSkid2 ;  
+    :hasRawMilkSource :RawMilkTank3, :RawMilkTank4 ;  
+    :hasSkimMilkDestination :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5 ;  
+    :hasCreamDestination :CreamTank4, :CreamTank5, :CreamTank6 .  
+  
+:Separator3 rdf:type :MilkSeparator ;  
+    :hasId "MS003" ;  
+    :hasName "Separator 3" ;  
+    :isCleanedBy :CleaningSkid2 ;  
+    :hasRawMilkSource :RawMilkTank1, :RawMilkTank2 ;  
+    :hasSkimMilkDestination :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5 ;  
+    :hasCreamDestination :CreamTank1, :CreamTank2, :CreamTank3 .  
+  
+:Storage rdf:type :Workcenter ;  
+    :hasName "Storage" ;  
+    :hasAsset :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5,  
+               :CreamTank1, :CreamTank2, :CreamTank3, :CreamTank4, :CreamTank5, :CreamTank6,  
+               :FilteredMilkTank1, :FilteredMilkTank2, :FilteredMilkTank3, :FilteredMilkTank4, :FilteredMilkTank5, :FilteredMilkTank6 .  
+  
+:SkimMilkTank1 rdf:type :SkimMilkTank ;  
+    :hasId "SMT001" ;  
+    :hasName "Skim Milk Tank 1" .  
+  
+:SkimMilkTank2 rdf:type :SkimMilkTank ;  
+    :hasId "SMT002" ;  
+    :hasName "Skim Milk Tank 2" .  
+  
+:SkimMilkTank3 rdf:type :SkimMilkTank ;  
+    :hasId "SMT003" ;  
+    :hasName "Skim Milk Tank 3" .  
+  
+:SkimMilkTank4 rdf:type :SkimMilkTank ;  
+    :hasId "SMT004" ;  
+    :hasName "Skim Milk Tank 4" .  
+  
+:SkimMilkTank5 rdf:type :SkimMilkTank ;  
+    :hasId "SMT005" ;  
+    :hasName "Skim Milk Tank 5" .  
+  
+:CreamTank1 rdf:type :CreamTank ;  
+    :hasId "CT001" ;  
+    :hasName "Cream Tank 1" .  
+  
+:CreamTank2 rdf:type :CreamTank ;  
+    :hasId "CT002" ;  
+    :hasName "Cream Tank 2" .  
+  
+:CreamTank3 rdf:type :CreamTank ;  
+    :hasId "CT003" ;  
+    :hasName "Cream Tank 3" .  
+  
+:CreamTank4 rdf:type :CreamTank ;  
+    :hasId "CT004" ;  
+    :hasName "Cream Tank 4" .  
+  
+:CreamTank5 rdf:type :CreamTank ;  
+    :hasId "CT005" ;  
+    :hasName "Cream Tank 5" .  
+  
+:CreamTank6 rdf:type :CreamTank ;  
+    :hasId "CT006" ;  
+    :hasName "Cream Tank 6" .  
+  
+:FilteredMilkTank1 rdf:type :FilteredMilkTank ;  
+    :hasId "FMT001" ;  
+    :hasName "Filtered Milk Tank 1" .  
+  
+:FilteredMilkTank2 rdf:type :FilteredMilkTank ;  
+    :hasId "FMT002" ;  
+    :hasName "Filtered Milk Tank 2" .  
+  
+:FilteredMilkTank3 rdf:type :FilteredMilkTank ;  
+    :hasId "FMT003" ;  
+    :hasName "Filtered Milk Tank 3" .  
+  
+:FilteredMilkTank4 rdf:type :FilteredMilkTank ;  
+    :hasId "FMT004" ;  
+    :hasName "Filtered Milk Tank 4" .  
+  
+:FilteredMilkTank5 rdf:type :FilteredMilkTank ;  
+    :hasId "FMT005" ;  
+    :hasName "Filtered Milk Tank 5" .  
+  
+:FilteredMilkTank6 rdf:type :FilteredMilkTank ;  
+    :hasId "FMT006" ;  
+    :hasName "Filtered Milk Tank 6" .  
+  
+:Filtering rdf:type :Department ;  
+    :hasName "Filtering" ;  
+    :hasDepartmentArea :MilkFiltering .  
+  
+:MilkFiltering rdf:type :DepartmentArea ;  
+    :hasName "Milk Filtering" ;  
+    :hasWorkcenter :FilteringWorkcenter .  
+  
+:FilteringWorkcenter rdf:type :Workcenter ;  
+    :hasName "Filtering" ;  
+    :hasAsset :MilkFilter1, :MilkFilter2, :MilkFilter3 .  
+  
+:MilkFilter1 rdf:type :MilkFilter ;  
+    :hasId "MF001" ;  
+    :hasName "Milk Filter 1" ;  
+    :hasSkimMilkSource :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5 ;  
+    :hasFilteredMilkDestination :FilteredMilkTank1, :FilteredMilkTank2, :FilteredMilkTank3, :FilteredMilkTank4, :FilteredMilkTank5, :FilteredMilkTank6 ;  
+    :isExtractingSkimMilkFrom :SkimMilkTank1 ;  
+    :isTransferringFilteredMilkTo :FilteredMilkTank1 ;  
+    :hasState "Filtering" .  
+  
+:MilkFilter2 rdf:type :MilkFilter ;  
+    :hasId "MF002" ;  
+    :hasName "Milk Filter 2" ;  
+    :hasSkimMilkSource :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5 ;  
+    :hasFilteredMilkDestination :FilteredMilkTank1, :FilteredMilkTank2, :FilteredMilkTank3, :FilteredMilkTank4, :FilteredMilkTank5, :FilteredMilkTank6 ;  
+    :isExtractingSkimMilkFrom :SkimMilkTank2 ;  
+    :isTransferringFilteredMilkTo :FilteredMilkTank2 ;  
+    :hasState "Filtering" .  
+  
+:MilkFilter3 rdf:type :MilkFilter ;  
+    :hasId "MF003" ;  
+    :hasName "Milk Filter 3" ;  
+    :hasSkimMilkSource :SkimMilkTank1, :SkimMilkTank2, :SkimMilkTank3, :SkimMilkTank4, :SkimMilkTank5 ;  
+    :hasFilteredMilkDestination :FilteredMilkTank1, :FilteredMilkTank2, :FilteredMilkTank3, :FilteredMilkTank4, :FilteredMilkTank5, :FilteredMilkTank6 .  
+  
+:MooChoMilkDairy :managesPlant :MooChoMilkPlant .  

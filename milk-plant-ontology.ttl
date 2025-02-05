@@ -1,0 +1,421 @@
+@prefix : <http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/> .
+
+<http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasAsset
+:hasAsset rdf:type owl:ObjectProperty ;
+          rdfs:domain :Plant ,
+                      :Workcenter ;
+          rdfs:range :Asset ;
+          rdfs:label "has"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasCreamDestination
+:hasCreamDestination rdf:type owl:ObjectProperty ;
+                     rdfs:domain :MilkSeparator ;
+                     rdfs:range :CreamTank ;
+                     owl:propertyDisjointWith :isTransferringCreamTo ;
+                     rdfs:comment "The milk separator may use the tank as destination for cream"@en ;
+                     rdfs:label "creamDestination"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasDepartment
+:hasDepartment rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Plant ;
+               rdfs:range :Department ;
+               rdfs:label "has"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasDepartmentArea
+:hasDepartmentArea rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :Department ;
+                   rdfs:range :DepartmentArea ;
+                   rdfs:label "has"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasFilteredMilkDestination
+:hasFilteredMilkDestination rdf:type owl:ObjectProperty ;
+                            rdfs:domain :MilkFilter ;
+                            rdfs:range :FilteredMilkTank ;
+                            owl:propertyDisjointWith :isTransferringFilteredMilkTo ;
+                            rdfs:comment "The membrane filter may use the tank as a destination for filtered milk"@en ;
+                            rdfs:label "filteredMilkSource"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasRawMilkSource
+:hasRawMilkSource rdf:type owl:ObjectProperty ;
+                  rdfs:domain :MilkSeparator ;
+                  rdfs:range :RawMilkTank ;
+                  owl:propertyDisjointWith :isExtractingRawMilkFrom ;
+                  rdfs:comment "The milk separator may use the tank as a source of raw milk"@en ;
+                  rdfs:label "rawMilkSource"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasSkimMilkDestination
+:hasSkimMilkDestination rdf:type owl:ObjectProperty ;
+                        rdfs:domain :MilkSeparator ;
+                        rdfs:range :SkimMilkTank ;
+                        owl:propertyDisjointWith :isTransferringSkimMilkTo ;
+                        rdfs:comment "The milk separator may use the tank as a destination for skim milk"@en ;
+                        rdfs:label "skimMilkDestination"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasSkimMilkSource
+:hasSkimMilkSource rdf:type owl:ObjectProperty ;
+                   rdfs:domain :MilkFilter ;
+                   rdfs:range :SkimMilkTank ;
+                   owl:propertyDisjointWith :isExtractingSkimMilkFrom ;
+                   rdfs:comment "The membrane filter may use the tank as a source of skim milk"@en ;
+                   rdfs:label "skimMilkSource"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasWorkcenter
+:hasWorkcenter rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :DepartmentArea ;
+               rdfs:range :Workcenter ;
+               rdfs:label "has"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isCleanedBy
+:isCleanedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Asset ;
+             rdfs:range :CleaningSkid .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isConnectedTo
+:isConnectedTo rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:SymmetricProperty ;
+               rdfs:domain :Line ;
+               rdfs:range :Asset .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isExtractingRawMilkFrom
+:isExtractingRawMilkFrom rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain :MilkSeparator ;
+                         rdfs:range :RawMilkTank ;
+                         rdfs:comment "The milk separator is currently extracting raw milk from the tank" .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isExtractingSkimMilkFrom
+:isExtractingSkimMilkFrom rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain :MilkFilter ;
+                          rdfs:range :SkimMilkTank ;
+                          rdfs:comment "The membrane filter is currently extracting skim milk from the tank" .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isTransferringCreamTo
+:isTransferringCreamTo rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain :MilkSeparator ;
+                       rdfs:range :CreamTank .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isTransferringFilteredMilkTo
+:isTransferringFilteredMilkTo rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf owl:topObjectProperty ;
+                              rdfs:domain :MilkFilter ;
+                              rdfs:range :FilteredMilkTank ;
+                              rdfs:comment "The membrane filter is currently transfering filtered milk to the tank" .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/isTransferringSkimMilkTo
+:isTransferringSkimMilkTo rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain :MilkSeparator ;
+                          rdfs:range :SkimMilkTank .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/managesPlant
+:managesPlant rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              rdfs:domain :Organization ;
+              rdfs:range :Plant ;
+              rdfs:comment "An organization manages a plant"@en ;
+              rdfs:label "managesPlant" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasCapacity
+:hasCapacity rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Tank ;
+             rdfs:range xsd:float ;
+             rdfs:comment "The capacity of the tank"@en ;
+             rdfs:label "Capacity"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasId
+:hasId rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Asset ;
+       rdfs:range xsd:string ;
+       rdfs:label "id"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasMembraneFilterState
+:hasMembraneFilterState rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain :MilkFilter ;
+                        rdfs:comment "The state of the membrane filter"@en ;
+                        rdfs:label "state"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Asset ,
+                     :OrganizationalUnit ;
+         rdfs:range xsd:string ;
+         rdfs:label "name"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasState
+:hasState rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Asset ;
+          rdfs:comment "The state of the asset"@en ;
+          rdfs:label "state"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasUnitOfMeasure
+:hasUnitOfMeasure rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "unitOfMeasure"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasUnits
+:hasUnits rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:range xsd:float .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/hasVolume
+:hasVolume rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Tank ;
+           rdfs:range xsd:float ;
+           rdfs:label "volume"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Asset
+:Asset rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasId ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange owl:rational
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasName ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange owl:rational
+                       ] .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/CleaningSkid
+:CleaningSkid rdf:type owl:Class ;
+              rdfs:subClassOf :Asset .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/CreamTank
+:CreamTank rdf:type owl:Class ;
+           rdfs:subClassOf :Tank ;
+           rdfs:label "Cream Tank"@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Department
+:Department rdf:type owl:Class ;
+            rdfs:subClassOf :OrganizationalUnit .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/DepartmentArea
+:DepartmentArea rdf:type owl:Class ;
+                rdfs:subClassOf :OrganizationalUnit .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/FilteredMilkTank
+:FilteredMilkTank rdf:type owl:Class ;
+                  rdfs:subClassOf :Tank .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Line
+:Line rdf:type owl:Class ;
+      rdfs:subClassOf :Asset ;
+      rdfs:comment "Connects assets to each other so that materials can flow between the assets."@en .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/MilkFilter
+:MilkFilter rdf:type owl:Class ;
+            rdfs:subClassOf :Asset ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExtractingSkimMilkFrom ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :SkimMilkTank
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isTransferringFilteredMilkTo ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :FilteredMilkTank
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf :isExtractingSkimMilkFrom
+                                             ] ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :SkimMilkTank
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty [ owl:inverseOf :isTransferringFilteredMilkTo
+                                             ] ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :FilteredMilkTank
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasState ;
+                              owl:allValuesFrom [ rdf:type rdfs:Datatype ;
+                                                  owl:oneOf [ rdf:type rdf:List ;
+                                                              rdf:first "Cleaning" ;
+                                                              rdf:rest [ rdf:type rdf:List ;
+                                                                         rdf:first "Filtering" ;
+                                                                         rdf:rest [ rdf:type rdf:List ;
+                                                                                    rdf:first "Off" ;
+                                                                                    rdf:rest [ rdf:type rdf:List ;
+                                                                                               rdf:first "Shutting down" ;
+                                                                                               rdf:rest [ rdf:type rdf:List ;
+                                                                                                          rdf:first "Standing by" ;
+                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                     rdf:first "Starting up" ;
+                                                                                                                     rdf:rest rdf:nil
+                                                                                                                   ]
+                                                                                                        ]
+                                                                                             ]
+                                                                                  ]
+                                                                       ]
+                                                            ]
+                                                ]
+                            ] .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/MilkSeparator
+:MilkSeparator rdf:type owl:Class ;
+               rdfs:subClassOf :Asset ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isExtractingRawMilkFrom ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :RawMilkTank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isTransferringCreamTo ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :CreamTank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :isTransferringSkimMilkTo ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :SkimMilkTank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty [ owl:inverseOf :isExtractingRawMilkFrom
+                                                ] ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :RawMilkTank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty [ owl:inverseOf :isTransferringCreamTo
+                                                ] ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :CreamTank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty [ owl:inverseOf :isTransferringSkimMilkTo
+                                                ] ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :SkimMilkTank
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasState ;
+                                 owl:allValuesFrom [ rdf:type rdfs:Datatype ;
+                                                     owl:oneOf [ rdf:type rdf:List ;
+                                                                 rdf:first "Cleaning" ;
+                                                                 rdf:rest [ rdf:type rdf:List ;
+                                                                            rdf:first "Off" ;
+                                                                            rdf:rest [ rdf:type rdf:List ;
+                                                                                       rdf:first "Separating" ;
+                                                                                       rdf:rest [ rdf:type rdf:List ;
+                                                                                                  rdf:first "Spinning down" ;
+                                                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                                                             rdf:first "Spinning up" ;
+                                                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                                                        rdf:first "Standing by" ;
+                                                                                                                        rdf:rest rdf:nil
+                                                                                                                      ]
+                                                                                                           ]
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                   ]
+                               ] .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf :OrganizationalUnit .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/OrganizationalUnit
+:OrganizationalUnit rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Plant
+:Plant rdf:type owl:Class ;
+       rdfs:subClassOf :OrganizationalUnit .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/RawMilkTank
+:RawMilkTank rdf:type owl:Class ;
+             rdfs:subClassOf :Tank .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/SkimMilkTank
+:SkimMilkTank rdf:type owl:Class ;
+              rdfs:subClassOf :Tank .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/SubAsset
+:SubAsset rdf:type owl:Class ;
+          rdfs:subClassOf :Asset .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Tank
+:Tank rdf:type owl:Class ;
+      rdfs:subClassOf :Asset .
+
+
+###  http://www.semanticweb.org/gioortiz/ontologies/2024/11/milk-plant-ontology/Workcenter
+:Workcenter rdf:type owl:Class ;
+            rdfs:subClassOf :OrganizationalUnit .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
